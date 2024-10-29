@@ -6,6 +6,7 @@ import java.util.Arrays;
 
 public class App {
 
+    //Metodo main, es el metodo principal que se corre cuando presionamos run. Muestra el menu y con el switch dirige la opcion del usuario a la que corresponde
     public static void main(String[] args) {
         Paciente paciente = null;
 
@@ -55,6 +56,7 @@ public class App {
         } while (opcion != 6);
     }
 
+    //Menu: metodo creado para mostrarle al paciente las opciones y esperar a que ingrese una opcion
     public static int menu() {
         System.out.println("---Clinica Contigo Aprendo---");
         System.out.println("----------------------------------");
@@ -69,32 +71,33 @@ public class App {
         return Leer.datoInt();
     }
 
+    //Metodo de la opcion 1: toma los datos requeridos al usuario y crea el objeto Paciente
     public static Paciente nuevoPaciente() {
         String nombrePaciente;
-        int rut;
-        String sexo;
+        String rut;
+        char sexo;
 
         do {
             System.out.println("Ingresar el Nombre del Paciente");
             nombrePaciente = Leer.dato();
 
-        } while (nombrePaciente.length() == 0);
+        } while (nombrePaciente.length() < 4);
 
         do {
             System.out.println("Ingresar el RUT del Paciente");
-            rut = Leer.datoInt();
-
-        } while (String.valueOf(rut).length() == 0);
+            rut = Leer.dato();
+        } while (rut.length() < 12);
 
         do {
-            System.out.println("Ingresar el Sexo del Paciente");
-            sexo = Leer.dato();
+            System.out.println("Ingresar el Sexo del Paciente (F/M)");
+            sexo = Leer.datoChar();
 
-        } while (sexo.length() == 0);
+        } while (sexo != 'M' && sexo != 'F');
 
         return new Paciente(rut, nombrePaciente, sexo);
     }
 
+    //Metodo de la opción 2: creado para mostrarle al usuario los datos ingresados y los pesos generados aleatoriamente en el constructor del objeto
     public static void mostrarDatosPaciente(Paciente paciente) {
         System.out.println("---Datos del Paciente---");
         System.out.println("----------------------------------");
@@ -102,8 +105,11 @@ public class App {
         System.out.println("RUT: " + paciente.getRut());
         System.out.println("Sexo: " + paciente.getSexo());
         System.out.println("----------------------------------");
+        paciente.mostrarPesosMensuales(); //Metodo creado en el Objeto para mostrar ordenadamente los pesos y meses
+
     }
 
+    //Metodo de la opción 3: se muestra el mes en el que el peso fue menor. Tomado del metodo del objeto que hace lo mismo
     public static void mostrarMesMenor(Paciente paciente) {
         System.out.println("---Mes con menor peso del Paciente---");
         System.out.println("----------------------------------");
@@ -111,6 +117,7 @@ public class App {
         System.out.println("----------------------------------");
     }
 
+    //Metodo de la opcion 4: creado para solicitar al usuario un peso de referencia y mostrarle en cuales meses el peso fue menor
     public static void compararPeso(Paciente paciente) {
         int peso;
         do {
@@ -127,6 +134,7 @@ public class App {
         }
     }
 
+    //Metodo de la opcion 5: le pedimos al usuario una estatura del paciente y en base a ese dato calculamos la condicion del paciente (normal, sobrepeso u obeso)
     public static void mostrarCondicionDelPaciente(Paciente paciente) {
         int mes = 11;
         float estatura;
@@ -135,17 +143,15 @@ public class App {
             System.out.println("Ingresar la estatura del Paciente");
             estatura = Leer.datoFloat();
 
-        } while (String.valueOf(estatura).length() == 0);
+        } while (Float.isNaN(estatura));
 
         String condicion = paciente.pesoMesX(mes, estatura);
 
         if (condicion != null) {
-            System.out.println("La condicion del Paciente es: " + condicion + ". Peso: " + paciente.getPesoMensual(mes) + " kg");
+            System.out.println("La condicion del Paciente es: " + condicion + ". Peso: " + paciente.getPesoMensual(mes) + " kg. IMC: " + paciente.indiceMasaCorporal(mes, estatura));
         } else {
             System.out.println("La condicion del Paciente no puede ser evaluada.");
             System.out.println("Peso: " + paciente.getPesoMensual(mes) + "kg. IMC: " + paciente.indiceMasaCorporal(mes, estatura));
         }
-
     }
-
 }
