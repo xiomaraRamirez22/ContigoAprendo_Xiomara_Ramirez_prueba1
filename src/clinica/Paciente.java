@@ -12,13 +12,13 @@ public class Paciente {
 
     //Constructor
     public Paciente(String rut, String nombrePaciente, char sexo) {
-        this.rut = rut; //Recibe un rut y se lo asigna al objeto
-        this.nombrePaciente = nombrePaciente; //Recibe un nombre y se lo asigna al objeto
-        this.sexo = sexo; //Recibe un sexo y se lo asigna al objeto
-        this.pesoMensual = new int[12]; //Se Asigna el tamaño del array
+        this.rut = rut;
+        this.nombrePaciente = nombrePaciente;
+        this.sexo = sexo;
+        this.pesoMensual = new int[12];
 
-        //Se rellena el array pesos con valores aleatorios
-        for (int i = 0; i < pesoMensual.length; i++) { //Recorremos con for desde 0 hasta la ultima posicion del array
+
+        for (int i = 0; i < pesoMensual.length; i++) {
             pesoMensual[i] = (int) (Math.random() * (250 - 70 + 1)) + 70;
         }
     }
