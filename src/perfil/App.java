@@ -76,6 +76,7 @@ public class App {
         String nombrePaciente;
         String rut;
         char sexo;
+        int edad;
 
         do {
             System.out.println("Ingresar el Nombre del Paciente");
@@ -94,7 +95,13 @@ public class App {
 
         } while (sexo != 'M' && sexo != 'F');
 
-        return new Paciente(rut, nombrePaciente, sexo);
+        do {
+            System.out.println("Ingresar edad del paciente (+ 18) ");
+            edad = Leer.datoInt();
+
+        } while (edad <  18);
+
+        return new Paciente(rut, nombrePaciente, sexo, edad);
     }
 
     //Metodo de la opción 2:
@@ -104,6 +111,7 @@ public class App {
         System.out.println("Nombre del Paciente: " + paciente.getNombrePaciente());
         System.out.println("RUT: " + paciente.getRut());
         System.out.println("Sexo: " + paciente.getSexo());
+        System.out.println("Edad: " + paciente.getEdad());
         System.out.println("----------------------------------");
         paciente.mostrarPesosMensuales();
 

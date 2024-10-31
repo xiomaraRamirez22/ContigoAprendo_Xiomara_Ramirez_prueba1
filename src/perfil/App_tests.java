@@ -12,7 +12,7 @@ public class App_tests {
         float estatura = 1.70f;
 
         //Opcion 1 Crear paciente
-        Paciente paciente = new Paciente("987698987654", "Luis Perez", 'M');
+        Paciente paciente = new Paciente("987698987654", "Luis Perez", 'M',40);
 
         // Opcion 2 Mostrar datos del paciente
         System.out.println("----------------------------------");
@@ -21,6 +21,7 @@ public class App_tests {
         System.out.println("Nombre del Paciente: " + paciente.getNombrePaciente());
         System.out.println("Nro de RUT: " + paciente.getRut());
         System.out.println("Sexo: " + paciente.getSexo());
+        System.out.println("Edad: " + paciente.getEdad());
         System.out.println("----------------------------------");
         paciente.mostrarPesosMensuales();
         System.out.println("----------------------------------");

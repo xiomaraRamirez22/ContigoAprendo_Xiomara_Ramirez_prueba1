@@ -9,13 +9,15 @@ public class Paciente {
     private String nombrePaciente;
     private char sexo;
     private int[] pesoMensual;
+    private int edad;
 
     //Constructor
-    public Paciente(String rut, String nombrePaciente, char sexo) {
+    public Paciente(String rut, String nombrePaciente, char sexo, int edad) {
         this.rut = rut;
         this.nombrePaciente = nombrePaciente;
         this.sexo = sexo;
         this.pesoMensual = new int[12];
+        this.edad = edad;
 
 
         for (int i = 0; i < pesoMensual.length; i++) {
@@ -59,6 +61,14 @@ public class Paciente {
 
     public int getPesoMensual(int mes) {
         return pesoMensual[mes - 1];
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
     }
 
     //Metodo Peso mensual
