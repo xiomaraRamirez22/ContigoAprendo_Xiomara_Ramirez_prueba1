@@ -56,12 +56,12 @@ public class Paciente {
         this.sexo = sexo;
     }
 
-    //Metodo para obtener un peso para un mes especifico (Pesos generados en el array)
+
     public int getPesoMensual(int mes) {
         return pesoMensual[mes - 1];
     }
 
-    //Metodo creado para mostrar por consola cada mes y cada peso que se genero de manera aleatoria
+    //Metodo Peso mensual
     public void mostrarPesosMensuales() {
         System.out.println("Pesos por mes: ");
         for (int i = 0; i < pesoMensual.length; i++) {
@@ -69,7 +69,7 @@ public class Paciente {
         }
     }
 
-    //Menor peso mensual: metodo para determinar cual es el menor peso entre todos. Comparamos el primero con el segundo y vamos tomando el menor hasta llegar al ultimo elemento
+    //Menor peso mensual:
     public int menorPesoMensual() {
 
         int menor = pesoMensual[0];
@@ -84,7 +84,7 @@ public class Paciente {
         return mes;
     }
 
-    // Menos de X kilos: metodo que recibe una cantidad de kilos y lo comparamos entre todos los pesos y mostramos cuales son esos meses donde el peso fue menor
+    // Menos de X kilos:
     public int[] menosDeXKilos(int kilos) {
         int cantidadMeses = 0;
         int posicion = 0;
@@ -110,13 +110,13 @@ public class Paciente {
         } else return null;
     }
 
-    //Indice de masa corporal: metodo que recibe un mes y una estatura y calculamos el indice de masa corporal con la formula especifica
+    //Indice de masa corporal:
     public float indiceMasaCorporal(int mes, float estatura) {
         float indice = pesoMensual[mes - 1] / (estatura * estatura);
         return indice;
     }
 
-    // Peso X Mes: tomamos el indice corporal y en base a unos rangos devolvemos si es normal, sobrepeso u obeso
+    // Peso X Mes:
     public String pesoMesX(int mes, float estatura) {
         float indice = indiceMasaCorporal(mes, estatura);
 
